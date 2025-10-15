@@ -1,0 +1,26 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build:asm+cpp (MinGW)",
+      "type": "shell",
+      "command": "nasm -f win64 multiply.asm -o multiply.obj && g++ -std=c++17 -O2 main.cpp multiply.obj -o mul.exe",
+      "options": { "cwd": "${workspaceFolder}/part3" },
+      "group": { "kind": "build", "isDefault": true },
+      "problemMatcher": []
+    },
+    {
+      "label": "run:mul 12 34",
+      "type": "shell",
+      "command": ".\\mul.exe 12 34",
+      "options": { "cwd": "${workspaceFolder}/part3" },
+      "dependsOn": "build:asm+cpp (MinGW)"
+    },
+    {
+      "label": "test",
+      "type": "shell",
+      "command": "nasm -f win64 multiply.asm -o multiply.obj && g++ -std=c++17 -O2 test_multiply.cpp multiply.obj -o test_mul.exe && .\\test_mul.exe",
+      "options": { "cwd": "${workspaceFolder}/part3" }
+    }
+  ]
+}
