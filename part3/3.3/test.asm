@@ -18,6 +18,6 @@ beq 1 6 done
 beq 0 0 factLp
 done halt
 
-n .fill 8
+n .fill 6
 pos1 .fill 1
 neg1 .fill -1

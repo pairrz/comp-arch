@@ -1,0 +1,39 @@
+machine halted
+total of 128 instructions executed
+final state of machine:
+
+@@@
+state:
+	pc 16
+	memory:
+		mem[  0] 8519696
+		mem[  1] 8585233
+		mem[  2] 1
+		mem[  3] 8650770
+		mem[  4] 8847379
+		mem[  5] 8716308
+		mem[  6] 6029318
+		mem[  7] 7733254
+		mem[  8] 19922945
+		mem[  9] 655361
+		mem[ 10] 1179650
+		mem[ 11] 2359300
+		mem[ 12] 3080197
+		mem[ 13] 19398657
+		mem[ 14] 16842743
+		mem[ 15] 25165824
+		mem[ 16] 13
+		mem[ 17] 9
+		mem[ 18] 1
+		mem[ 19] -1
+		mem[ 20] 15
+	registers:
+		reg[0] 0
+		reg[1] 117
+		reg[2] 425984
+		reg[3] 9
+		reg[4] 32768
+		reg[5] 0
+		reg[6] 0
+		reg[7] -1
+end state

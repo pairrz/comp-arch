@@ -1,5 +1,5 @@
 machine halted
-total of 195 instructions executed
+total of 121 instructions executed
 final state of machine:
 
 @@@
@@ -23,15 +23,15 @@ state:
 		mem[ 14] 17694721
 		mem[ 15] 16842742
 		mem[ 16] 25165824
-		mem[ 17] 8
+		mem[ 17] 6
 		mem[ 18] 1
 		mem[ 19] -1
 	registers:
 		reg[0] 0
 		reg[1] 1
 		reg[2] 0
-		reg[3] 40320
-		reg[4] 20160
+		reg[3] 720
+		reg[4] 360
 		reg[5] 0
 		reg[6] 1
 		reg[7] -1
