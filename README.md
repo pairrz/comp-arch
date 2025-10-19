@@ -20,3 +20,7 @@ cd /d/comp-arch/comp-arch/part3/3.1
 /d/comp-arch/comp-arch/part2/simulator machinecode.txt
 
 /d/comp-arch/comp-arch/part2/simulator machinecode.txt > result_output.txt
+
+ทดสอบ part2
+/d/comp-arch/comp-arch/part2/simulator /d/comp-arch/comp-arch/part1/machinecode.txt
+
