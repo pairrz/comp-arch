@@ -17,3 +17,5 @@ cd /d/comp-arch/comp-arch/part3/3.1
 | sed -n '/machine halted/,$p' > result_output.txt
 
 /d/comp-arch/comp-arch/part2/simulator machinecode.txt
+
+/d/comp-arch/comp-arch/part2/simulator machinecode.txt > result_output.txt

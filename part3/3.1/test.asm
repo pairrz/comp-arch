@@ -14,8 +14,8 @@ add 5 7 5
 beq 5 0 done
 beq 0 0 loop
 done halt
-mcand .fill 13
-mplier .fill 9
+mcand .fill 32766
+mplier .fill 10383
 one .fill 1
 neg1 .fill -1
 fiftn .fill 15
