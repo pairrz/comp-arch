@@ -5,6 +5,8 @@
 #include <cstdlib>
 #include <cctype>
 
+/*isNumber(s): ตรวจว่าสตริง s เป็นจำนวนเต็มหรือไม่ (รองรับ + / - นำหน้า)
+    ใช้เวลาต้องตัดสินใจว่า arg เป็นตัวเลขจริง หรือเป็น label */
 bool Assembler::isNumber(const std::string& s) {
     if (s.empty()) return false;
     size_t i = 0;
