@@ -11,10 +11,10 @@ int main() {
     const string outFile   = "machinecode.txt";
 
     try {
-        Assembler a;
-        a.parseFile(inputFile);
-        a.buildSymbols();
-        vector<int> words = a.encodeAll();
+        Assembler a; // ตัวแปลง assembly → machine code
+        a.parseFile(inputFile); // 1) อ่าน test.asm แล้วแตกบรรทัดเป็น (label/opcode/args)
+        a.buildSymbols(); // 2) สร้าง symbol table (label → เลขบรรทัด) สำหรับอ้างอิงตอนเข้ารหัส
+        vector<int> words = a.encodeAll(); // 3) เข้ารหัสทุกบรรทัดเป็นคำสั่ง 32-bit (เก็บเป็น int)
 
         // 1) พิมพ์ผลใน Terminal
         for (int w : words) cout << w << '\n';
@@ -26,11 +26,11 @@ int main() {
             return 1;
         }
         for (int w : words) output << w << '\n';
-        output.close();
+        output.close(); // ปิดไฟล์ให้เรียบร้อย (แฟลชข้อมูลลงดิสก์)
 
         cout << "Saved machine code to '" << outFile << "'\n";
     }
-    catch (const exception& e) {
+    catch (const exception& e) { // ดักทุก error ที่ Assembler โยนมา (เช่น label ไม่เจอ / offset เกินช่วง
         cerr << "Error: " << e.what() << '\n';
         return 1;
     }
