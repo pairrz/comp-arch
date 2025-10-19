@@ -27,7 +27,7 @@ void printState(const State& state) { //ฟังก์ชันแสดงส�
     cout << "\tpc " << state.pc << "\n"; //แสดงค่า pc
     cout << "\tmemory:\n";
     for (int i = 0; i < state.numMemory; i++) { //วนค่าหน่วยความจำที่มีคำสั่ง
-        cout << "\t\tmem[" << setw(3) << i << "] " << state.mem[i] << "\n"; //แสดงค่าคำสั่งในหน่วยความจำ
+        cout << "\t\tmem["<< i << "] " << state.mem[i] << "\n"; //แสดงค่าคำสั่งในหน่วยความจำ
     }
     cout << "\tregisters:\n";
     for (int i = 0; i < NUMREGS; i++) { //วนทุกค่า register
@@ -86,17 +86,17 @@ int main(int argc, char* argv[]) {
         instrCount++; //เพิ่มจำนวนคำสั่งที่ประมวลผล
 
         switch (opcode) {
-            case 0:{ //add
+            case 0:{ //add (R-type)
                 state.reg[dest] = state.reg[regA] + state.reg[regB]; //บวกค่าใน register A กับ B แล้วเก็บใน dest
                 state.pc = nextPC; //อัพเดต pc
                 break;
             }
-            case 1:{ //nand
+            case 1:{ //nand (R-type)
                 state.reg[dest] = ~(state.reg[regA] & state.reg[regB]); //ทำ nand ระหว่าง register A กับ B แล้วเก็บใน dest
                 state.pc = nextPC; //อัพเดต pc
                 break;
             }
-            case 2:{ //lw
+            case 2:{ //lw (I-type)
                 int addr = state.reg[regA] + off32; //คำนวณที่อยู่โดยใช้ register A และ offset
                 if (addr < 0 || addr >= NUMMEMORY) { //ตรวจสอบขอบเขต
                     cerr << "Error: lw address out of range\n";
@@ -106,7 +106,7 @@ int main(int argc, char* argv[]) {
                 state.pc = nextPC; //อัพเดต pc
                 break;
             }
-            case 3:{//sw
+            case 3:{//sw (I-type)
                 int addr = state.reg[regA] + off32; //คำนวณที่อยู่โดยใช้ register A และ offset
                 if (addr < 0 || addr >= NUMMEMORY) { //ตรวจสอบขอบเขต
                     cerr << "Error: sw address out of range\n";
@@ -117,21 +117,21 @@ int main(int argc, char* argv[]) {
                 state.pc = nextPC; //อัพเดต pc
                 break;
             }
-            case 4: {//beq
+            case 4: {//beq (I-type)
                 if (state.reg[regA] == state.reg[regB]) //ตรวจสอบเงื่อนไข
                     state.pc = nextPC + off32; //ถ้าเท่ากันกระโดดไปที่ pc ใหม่
                 else
                     state.pc = nextPC; //ถ้าไม่เท่ากันไปที่ pc ถัดไป
                 break;
             }
-            case 5: {//jalr
+            case 5: {//jalr (J-type)
                 int next = nextPC;
                 int target = state.reg[regA]; //เก็บค่าจาก register A เป็น target pc
                 state.pc = target; //อัพเดต pc เป็น target
                 state.reg[regB] = next; //เก็บค่าของ next pc ใน register B
                 break;
             }
-            case 6: {//halt
+            case 6: {//halt (O-type)
                 state.pc = nextPC; //อัพเดต pc เป็น pc ถัดไป
                 cout << "machine halted\n";
                 cout << "total of " << instrCount << " instructions executed\n"; //แสดงจำนวนคำสั่งที่ประมวลผล
@@ -140,7 +140,7 @@ int main(int argc, char* argv[]) {
                 halted = true; //หยุดการทำงาน
                 break;
             }
-            case 7:{ //noop
+            case 7:{ //noop (O-type)
                 state.pc = nextPC; //อัพเดต pc เป็น pc ถัดไป
                 break;
             }
