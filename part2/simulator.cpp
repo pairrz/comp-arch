@@ -155,6 +155,8 @@ int main(int argc, char* argv[]) {
     return 0;
 }
 
+//g++ simulator.cpp -o simulator.exe
+//./simulator.exe D:\comp-arch\part1\machinecode.txt
 //.\simulator.exe "D:\comp-arch\part1\machinecode.txt" > output.txt 
 // คำสั่งรัน 
 
